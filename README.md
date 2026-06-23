@@ -27,6 +27,14 @@ Projet Spring Boot - TP Tests unitaires / intégration / composant
 
 ---
 
+### 🐳 Mise en place docker 
+
+Il faut exécuter le lancement du docker-compose de l'application avec la commande 
+
+```
+docker compose up -d
+```
+
 ### 2. Lancer l’application
 
 ```bash
