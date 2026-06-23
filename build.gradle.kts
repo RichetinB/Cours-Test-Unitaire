@@ -77,6 +77,8 @@ val testArchitectureImplementation: Configuration by configurations.getting {
     extendsFrom(configurations.implementation.get())
 }
 
+val testcontainersVersion = "1.19.3"
+
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-jdbc")
     implementation("org.springframework.boot:spring-boot-starter-web")
@@ -100,8 +102,8 @@ dependencies {
         exclude(module = "mockito-core")
     }
     testIntegrationImplementation("org.testcontainers:postgresql:1.19.1")
-    testIntegrationImplementation("org.testcontainers:jdbc-test:1.12.0")
-    testIntegrationImplementation("org.testcontainers:testcontainers:1.19.1")
+    testImplementation("org.testcontainers:testcontainers:${testcontainersVersion}")
+    testImplementation("org.testcontainers:postgresql:${testcontainersVersion}")
     testIntegrationImplementation("info.solidsoft.gradle.pitest:gradle-pitest-plugin:1.15.0")
     testIntegrationImplementation("io.kotest.extensions:kotest-extensions-spring:1.3.0")
     testIntegrationImplementation("io.kotest.extensions:kotest-extensions-testcontainers:2.0.2")
@@ -136,6 +138,9 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+
+    environment("DOCKER_HOST", "npipe:////./pipe/docker_engine")
+
 }
 
 tasks.register<JacocoReport>("jacocoFullReport") {

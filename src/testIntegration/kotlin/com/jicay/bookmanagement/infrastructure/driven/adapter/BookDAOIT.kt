@@ -49,14 +49,14 @@ class BookDAOIT(
 
             // THEN
             res.shouldContainExactlyInAnyOrder(
-                Book("Hamlet", "Shakespeare"), Book("Les fleurs du mal", "Beaudelaire"), Book("Harry Potter", "Rowling")
+                Book(name = "Hamlet", author = "Shakespeare"), Book(name = "Les fleurs du mal", author = "Beaudelaire"), Book(name = "Harry Potter", author = "Rowling")
             )
         }
 
         test("create book in db") {
             // GIVEN
             // WHEN
-            bookDAO.createBook(Book("Les misérables", "Victor Hugo"))
+            bookDAO.createBook(Book(name = "Les misérables", author =  "Victor Hugo"))
 
             // THEN
             val res = performQuery(
