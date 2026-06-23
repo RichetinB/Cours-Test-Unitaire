@@ -32,6 +32,8 @@ Projet Spring Boot - TP Tests unitaires / intégration / composant
 Il faut exécuter le lancement du docker-compose de l'application avec la commande 
 
 ```
+cd .\docker\book-management-local\
+
 docker compose up -d
 ```
 
